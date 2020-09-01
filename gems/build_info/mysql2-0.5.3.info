@@ -1,0 +1,4 @@
+--use-system-libraries
+--with-xml2-include=/usr/local/opt/libxml2/include/libxml2
+--with-ldflags=-L/usr/local/opt/openssl/lib
+--with-cppflags=-I/usr/local/opt/openssl/include

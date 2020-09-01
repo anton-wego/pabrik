@@ -1,0 +1,35 @@
+<% if absens.blank? %>
+  <center><p>Tidak ada data</p></center>
+<% else %>
+  <table border="0" cellspacing="0" cellpadding="0" id="index_table_absens" class="index_table index" paginator="true">
+    <thead>
+      <tr>
+        <th class="col col-absen_date">Absen Date</th>
+        <th class="col col-jam_masuk">jam masuk</th>
+        <th class="col col-jam_keluar">jam keluar</th>
+        <th class="col col-over_time_1">lembur 1</th>
+        <th class="col col-over_time_2">lembur 2</th>
+        <th class="col col-over_time_3">lembur 3</th>
+        <th class="col col-actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+
+    <% absens.each_with_index do |a, i| %>
+      <tr class="<%= (i / 2) == 0 ? 'odd' : 'even' %>" id="absen_<%= a.id %>">
+        <td class="col col-absen_date"><%= a.absen_date %></td>
+        <td class="col col-jam_masuk"><%= a.time_in.strftime("%H:%M") %></td>
+        <td class="col col-jam_keluar"><%= a.time_out.strftime("%H:%M") %></td>
+        <td class="col col-over_time_1"><%= a.over_time_1 %></td>
+        <td class="col col-over_time_2"><%= a.over_time_2 %></td>
+        <td class="col col-over_time_3"><%= a.over_time_3 %></td>
+        <td class="col col-actions">
+          <div class="table_actions">
+            <a class="view_link member_link" title="View" href="/admin/absens/<%= a.id %>">View</a>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
